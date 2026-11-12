@@ -7,143 +7,161 @@
   <title>3.4 Web app para automatización IA</title>
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" crossorigin="anonymous">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <a class="visually-hidden-focusable skip-link" href="#contenido">Saltar al contenido</a>
 
-  <header class="app-header text-white">
-    <div class="container py-4 py-md-5">
-      <div class="d-flex align-items-center gap-3">
-        <img src="assets/favicon.svg" alt="" width="56" height="56" class="app-logo flex-shrink-0">
-        <div>
-          <p class="text-uppercase small fw-semibold mb-1 opacity-75">Práctica 3.4 · n8n Cloud + OpenAI</p>
-          <h1 class="h2 mb-1">Web app para automatización IA</h1>
-          <p class="mb-0 opacity-75">Asistente académico de tecnologías de la información. Elige un tema, un nivel y la integración de n8n que responderá tu pregunta.</p>
-        </div>
+  <header class="masthead">
+    <div class="shell masthead__inner">
+      <img src="assets/favicon.svg" alt="" width="48" height="48" class="masthead__mark">
+      <div class="masthead__title">
+        <h1>Web app para automatización IA</h1>
+        <p class="lead">Asistente académico de tecnologías de la información. Elige un tema, un nivel y la integración de n8n que responderá tu pregunta.</p>
       </div>
+      <ul class="course" aria-label="Práctica">
+        <li>Práctica 3.4</li>
+        <li>n8n Cloud + OpenAI</li>
+      </ul>
     </div>
   </header>
 
-  <main id="contenido" class="container my-4 my-md-5">
-    <div class="row g-4">
-      <!-- Formulario -->
-      <section class="col-12 col-lg-5" aria-labelledby="titulo-formulario">
-        <div class="card shadow-sm h-100">
-          <div class="card-body p-4">
-            <h2 id="titulo-formulario" class="h5 mb-3">Nueva consulta</h2>
+  <main id="contenido" class="shell workspace">
+    <!-- Formulario -->
+    <section class="panel composer" aria-labelledby="titulo-formulario">
+      <h2 id="titulo-formulario">Nueva consulta</h2>
 
-            <form id="form-consulta" novalidate>
-              <div class="mb-3">
-                <label for="tema" class="form-label">Tema <span class="text-danger" aria-hidden="true">*</span></label>
-                <select id="tema" name="tema" class="form-select" required aria-describedby="tema-error">
-                  <option value="" selected>Selecciona un tema…</option>
-                  <option value="Inteligencia artificial">Inteligencia artificial</option>
-                  <option value="Redes">Redes</option>
-                  <option value="Programación">Programación</option>
-                  <option value="Bases de datos e Internet de las cosas (IoT)">Bases de datos e Internet de las cosas (IoT)</option>
-                </select>
-                <div id="tema-error" class="invalid-feedback"></div>
-              </div>
-
-              <div class="mb-3">
-                <label for="nivel" class="form-label">Nivel <span class="text-danger" aria-hidden="true">*</span></label>
-                <select id="nivel" name="nivel" class="form-select" required aria-describedby="nivel-error">
-                  <option value="" selected>Selecciona un nivel…</option>
-                  <option value="Básico">Básico</option>
-                  <option value="Intermedio">Intermedio</option>
-                  <option value="Avanzado">Avanzado</option>
-                </select>
-                <div id="nivel-error" class="invalid-feedback"></div>
-              </div>
-
-              <div class="mb-3">
-                <label for="pregunta" class="form-label">Pregunta <span class="text-danger" aria-hidden="true">*</span></label>
-                <textarea id="pregunta" name="pregunta" class="form-control" rows="4" required
-                  maxlength="500" placeholder="Ejemplo: ¿Cómo funciona el protocolo MQTT?"
-                  aria-describedby="pregunta-ayuda pregunta-error"></textarea>
-                <div class="d-flex justify-content-between form-text">
-                  <span id="pregunta-ayuda">Entre 5 y 500 caracteres. No incluyas datos personales.</span>
-                  <span id="contador" aria-hidden="true">0/500</span>
-                </div>
-                <div id="pregunta-error" class="invalid-feedback"></div>
-              </div>
-
-              <fieldset class="mb-4" aria-describedby="integracion-error">
-                <legend class="form-label fs-6 mb-2">Integración <span class="text-danger" aria-hidden="true">*</span></legend>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="integracion" id="integracion-nativo" value="nativo" required>
-                  <label class="form-check-label" for="integracion-nativo">Nodo OpenAI <span class="text-body-secondary">(nativo)</span></label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="integracion" id="integracion-http" value="http">
-                  <label class="form-check-label" for="integracion-http">HTTP Request / Responses API <span class="text-body-secondary">(http)</span></label>
-                </div>
-                <div id="integracion-error" class="invalid-feedback"></div>
-              </fieldset>
-
-              <div class="d-grid d-sm-flex gap-2">
-                <button type="submit" id="btn-enviar" class="btn btn-primary btn-lg flex-sm-fill">
-                  <span id="btn-spinner" class="spinner-border spinner-border-sm me-2 d-none" aria-hidden="true"></span>
-                  <span id="btn-texto">Enviar consulta</span>
-                </button>
-                <button type="button" id="btn-limpiar" class="btn btn-outline-secondary btn-lg">Limpiar</button>
-              </div>
-            </form>
+      <form id="form-consulta" class="composer__form" novalidate>
+        <div class="field">
+          <label for="tema" class="label">Tema <span class="req" aria-hidden="true">*</span></label>
+          <div class="select">
+            <select id="tema" name="tema" class="input" required aria-describedby="tema-error">
+              <option value="" selected>Selecciona un tema…</option>
+              <option value="Inteligencia artificial">Inteligencia artificial</option>
+              <option value="Redes">Redes</option>
+              <option value="Programación">Programación</option>
+              <option value="Bases de datos e Internet de las cosas (IoT)">Bases de datos e Internet de las cosas (IoT)</option>
+            </select>
           </div>
-        </div>
-      </section>
-
-      <!-- Estado y resultado -->
-      <section class="col-12 col-lg-7" aria-labelledby="titulo-resultado">
-        <h2 id="titulo-resultado" class="visually-hidden">Resultado</h2>
-
-        <!-- Área de anuncios accesible -->
-        <div id="anuncios" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></div>
-
-        <div id="estado-cargando" class="alert alert-info d-flex align-items-center d-none" role="status">
-          <span class="spinner-border spinner-border-sm me-3" aria-hidden="true"></span>
-          <span>Consultando el asistente...</span>
+          <div id="tema-error" class="field-error"></div>
         </div>
 
-        <div id="estado-error" class="alert alert-danger d-none" role="alert">
-          <h3 class="h6 alert-heading mb-1" id="error-titulo">No fue posible completar la consulta</h3>
-          <p class="mb-2" id="error-mensaje"></p>
-          <button type="button" id="btn-reintentar" class="btn btn-sm btn-outline-danger">Reintentar</button>
-        </div>
-
-        <div id="estado-vacio" class="card border-dashed text-center text-body-secondary">
-          <div class="card-body p-5">
-            <p class="mb-1 fw-semibold">Aún no hay respuestas.</p>
-            <p class="mb-0 small">Completa el formulario y envía tu pregunta para ver aquí la respuesta del asistente.</p>
+        <div class="field">
+          <label for="nivel" class="label">Nivel <span class="req" aria-hidden="true">*</span></label>
+          <div class="select">
+            <select id="nivel" name="nivel" class="input" required aria-describedby="nivel-error">
+              <option value="" selected>Selecciona un nivel…</option>
+              <option value="Básico">Básico</option>
+              <option value="Intermedio">Intermedio</option>
+              <option value="Avanzado">Avanzado</option>
+            </select>
           </div>
+          <div id="nivel-error" class="field-error"></div>
         </div>
 
-        <article id="tarjeta-respuesta" class="card shadow-sm d-none" aria-labelledby="respuesta-titulo" tabindex="-1">
-          <div class="card-header bg-white">
-            <h3 id="respuesta-titulo" class="h5 mb-2">Respuesta del asistente</h3>
-            <div class="d-flex flex-wrap gap-2">
-              <span class="badge text-bg-primary" id="badge-tema"></span>
-              <span class="badge text-bg-secondary" id="badge-nivel"></span>
-              <span class="badge text-bg-success" id="badge-integracion"></span>
+        <div class="field field--wide">
+          <label for="pregunta" class="label">Pregunta <span class="req" aria-hidden="true">*</span></label>
+          <textarea id="pregunta" name="pregunta" class="input input--area" rows="4" required
+            maxlength="500" placeholder="Ejemplo: ¿Cómo funciona el protocolo MQTT?"
+            aria-describedby="pregunta-ayuda pregunta-error"></textarea>
+          <div class="hint">
+            <span id="pregunta-ayuda">Entre 5 y 500 caracteres. No incluyas datos personales.</span>
+            <span id="contador" class="count" aria-hidden="true">0/500</span>
+          </div>
+          <div id="pregunta-error" class="field-error"></div>
+        </div>
+
+        <fieldset class="route field--wide" aria-describedby="integracion-error">
+          <legend class="label">Integración <span class="req" aria-hidden="true">*</span></legend>
+          <div class="tray">
+            <div class="option">
+              <input type="radio" name="integracion" id="integracion-nativo" value="nativo" required>
+              <label for="integracion-nativo"><span class="option__name">Nodo OpenAI</span> <span class="option__value">(nativo)</span></label>
+            </div>
+            <div class="option">
+              <input type="radio" name="integracion" id="integracion-http" value="http">
+              <label for="integracion-http"><span class="option__name">HTTP Request / Responses API</span> <span class="option__value">(http)</span></label>
             </div>
           </div>
-          <div class="card-body">
-            <p class="small text-body-secondary mb-2"><strong>Tu pregunta:</strong> <span id="respuesta-pregunta"></span></p>
-            <div id="respuesta-texto" class="respuesta-texto"></div>
+          <div id="integracion-error" class="field-error"></div>
+        </fieldset>
+
+        <div class="actions field--wide">
+          <button type="submit" id="btn-enviar" class="key key--primary">
+            <span id="btn-spinner" class="spinner keep-motion d-none" aria-hidden="true"></span>
+            <span id="btn-texto">Enviar consulta</span>
+          </button>
+          <button type="button" id="btn-limpiar" class="key">Limpiar</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Estado y resultado -->
+    <section class="result" aria-labelledby="titulo-resultado">
+      <h2 id="titulo-resultado" class="visually-hidden">Resultado</h2>
+
+      <!-- Área de anuncios accesible -->
+      <div id="anuncios" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></div>
+
+      <div id="estado-cargando" class="panel loading d-none" role="status">
+        <p class="status">
+          <span class="spinner keep-motion" aria-hidden="true"></span>
+          <span>Consultando el asistente…</span>
+        </p>
+        <div class="skeleton" aria-hidden="true"><span></span><span></span><span></span></div>
+      </div>
+
+      <div id="estado-error" class="panel alert-error d-none" role="alert">
+        <h3 id="error-titulo">
+          <svg class="icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.5v4.25M8 10.75v.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          No fue posible completar la consulta
+        </h3>
+        <p id="error-mensaje"></p>
+        <button type="button" id="btn-reintentar" class="key key--small">Reintentar</button>
+      </div>
+
+      <div id="estado-vacio" class="empty">
+        <p class="empty__title">Aún no hay respuestas.</p>
+        <p>Completa el formulario y envía tu pregunta para ver aquí la respuesta del asistente.</p>
+      </div>
+
+      <article id="tarjeta-respuesta" class="panel answer d-none" aria-labelledby="respuesta-titulo" tabindex="-1">
+        <div class="answer__head">
+          <h3 id="respuesta-titulo">Respuesta del asistente</h3>
+          <div class="tags">
+            <span id="badge-tema"></span>
+            <span id="badge-nivel"></span>
+            <span id="badge-integracion"></span>
           </div>
-          <div class="card-footer bg-white small text-body-secondary" id="respuesta-meta"></div>
-        </article>
-      </section>
-    </div>
+        </div>
+        <div class="answer__body">
+          <p class="asked"><strong>Tu pregunta:</strong> <span id="respuesta-pregunta"></span></p>
+          <div id="respuesta-texto" class="respuesta-texto"></div>
+        </div>
+        <div class="answer__foot" id="respuesta-meta"></div>
+      </article>
+    </section>
   </main>
 
-  <footer class="app-footer border-top py-4 mt-auto">
-    <div class="container small text-body-secondary text-center">
-      <p class="mb-1">Desarrollado por <strong>Claudia Melissa Manzano Luna</strong> · No. de control 23200168</p>
-      <p class="mb-1">Ingeniería en Tecnologías de la Información y Comunicaciones · Inteligencia Artificial aplicada a las TIC</p>
-      <p class="mb-0">Tecnológico Nacional de México, Campus Pachuca · Docente: M.C. Víctor Manuel Pinedo Fernández · 2026</p>
+  <footer class="site-foot">
+    <div class="shell site-foot__grid">
+      <ul>
+        <li>Desarrollado por <strong>Claudia Melissa Manzano Luna</strong></li>
+        <li>No. de control 23200168</li>
+      </ul>
+      <ul>
+        <li>Ingeniería en Tecnologías de la Información y Comunicaciones</li>
+        <li>Inteligencia Artificial aplicada a las TIC</li>
+      </ul>
+      <ul>
+        <li>Tecnológico Nacional de México, Campus Pachuca</li>
+        <li>Docente: M.C. Víctor Manuel Pinedo Fernández</li>
+        <li>2026</li>
+      </ul>
     </div>
   </footer>
 
