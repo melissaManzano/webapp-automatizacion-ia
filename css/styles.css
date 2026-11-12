@@ -1,0 +1,119 @@
+/* Paleta y tipografía del proyecto */
+:root {
+  --app-primary: #1f3a68;
+  --app-primary-2: #2c5aa0;
+  --app-accent: #17a2b8;
+  --app-bg: #f5f7fb;
+  --bs-primary: #1f3a68;
+  --bs-primary-rgb: 31, 58, 104;
+  --bs-link-color: #2c5aa0;
+  --bs-body-font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--app-bg);
+}
+
+.skip-link {
+  position: absolute;
+  top: .5rem;
+  left: .5rem;
+  z-index: 1000;
+  padding: .5rem 1rem;
+  background: #fff;
+  border-radius: .375rem;
+}
+
+/* Encabezado */
+.app-header {
+  background: linear-gradient(135deg, var(--app-primary) 0%, var(--app-primary-2) 100%);
+}
+
+.app-logo {
+  background: #fff;
+  border-radius: 14px;
+  padding: 6px;
+}
+
+/* Botones */
+.btn-primary {
+  --bs-btn-bg: var(--app-primary);
+  --bs-btn-border-color: var(--app-primary);
+  --bs-btn-hover-bg: var(--app-primary-2);
+  --bs-btn-hover-border-color: var(--app-primary-2);
+  --bs-btn-active-bg: #172c50;
+  --bs-btn-disabled-bg: var(--app-primary);
+  --bs-btn-disabled-border-color: var(--app-primary);
+}
+
+.text-bg-primary {
+  background-color: var(--app-primary) !important;
+}
+
+/* Controles táctiles y foco visible */
+.form-select,
+.form-control {
+  min-height: 44px;
+}
+
+.form-check-input {
+  width: 1.25em;
+  height: 1.25em;
+}
+
+.form-check {
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+}
+
+:focus-visible {
+  outline: 3px solid var(--app-accent);
+  outline-offset: 2px;
+}
+
+fieldset.is-invalid .invalid-feedback {
+  display: block;
+}
+
+/* Estados */
+.border-dashed {
+  border: 2px dashed #c9d2e3;
+  background: transparent;
+}
+
+/* Respuesta: conserva saltos de línea y evita desbordes */
+.respuesta-texto {
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  line-height: 1.65;
+}
+
+.respuesta-texto code {
+  background: #eef1f7;
+  padding: .1rem .3rem;
+  border-radius: .25rem;
+  color: #6b2b8a;
+}
+
+#tarjeta-respuesta:focus {
+  outline: none;
+}
+
+.badge {
+  white-space: normal;
+  text-align: left;
+}
+
+@media (max-width: 575.98px) {
+  .app-logo {
+    width: 44px;
+    height: 44px;
+  }
+}
