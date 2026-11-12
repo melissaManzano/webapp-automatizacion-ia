@@ -6,7 +6,7 @@ Aplicación web académica y estática (HTML5, CSS3, Bootstrap 5 y JavaScript ES
 - **Repositorio:** https://github.com/melissaManzano/webapp-automatizacion-ia
 - **Webhook de producción (n8n):** https://melissaml.app.n8n.cloud/webhook/ia-webapp
 
-Desarrollado por **Claudia Melissa Manzano Luna** · Ingeniería en Tecnologías de la Información y Comunicaciones · Taller Avanzado de Desarrollo de Software · TecNM Campus Pachuca.
+Desarrollado por **Claudia Melissa Manzano Luna** · Ingeniería en Tecnologías de la Información y Comunicaciones · Inteligencia Artificial aplicada a las TIC · TecNM Campus Pachuca.
 
 ---
 
